@@ -19,6 +19,23 @@
   <body>
     <header class="site-header" id="site-header">
       <a class="brand" href="#top">Yiming Liu</a>
+      <nav id="primary-nav" class="nav-links" aria-label="Primary">
+        <div class="nav-mobile-head">
+          <a class="nav-mobile-brand" href="#top">Yiming Liu</a>
+          <button type="button" class="nav-close" id="nav-close" aria-label="Close menu">
+            <span class="nav-close-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="nav-link-list">
+          <a href="#profile">Profile</a>
+          <a href="#publications">Publications</a>
+          <a href="#research">Research</a>
+          <a href="#teaching">Teaching</a>
+          <a href="#cv-pdf">CV</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a class="nav-cta" href="assets/CV_YIMING_LIU.pdf" download>Download CV</a>
+      </nav>
       <button
         type="button"
         class="nav-toggle"
@@ -33,15 +50,6 @@
           <span></span>
         </span>
       </button>
-      <nav id="primary-nav" class="nav-links" aria-label="Primary">
-        <a href="#profile">Profile</a>
-        <a href="#publications">Publications</a>
-        <a href="#research">Research</a>
-        <a href="#teaching">Teaching</a>
-        <a href="#cv-pdf">CV</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-cta" href="assets/CV_YIMING_LIU.pdf" download>Download CV</a>
-      </nav>
     </header>
     <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
@@ -626,6 +634,13 @@
 
         if (backdrop) {
           backdrop.addEventListener("click", function () {
+            setOpen(false);
+          });
+        }
+
+        var closeBtn = document.getElementById("nav-close");
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function () {
             setOpen(false);
           });
         }
