@@ -350,21 +350,6 @@ a.btn-primary {
   box-shadow: var(--shadow-xs);
 }
 
-.hero-metric-chip--date {
-  min-height: 4.25rem;
-  padding: 0.5rem 0.4rem;
-  justify-content: center;
-}
-
-.hero-metric-date-line {
-  font-size: 0.6875rem;
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
-  color: var(--muted);
-  text-wrap: balance;
-}
-
 .hero-metric-value {
   font-family: var(--font);
   font-size: clamp(1.5rem, 4vw, 1.85rem);
@@ -384,22 +369,6 @@ a.btn-primary {
 
 .hero-metric-chip .hero-metric-value {
   font-size: clamp(1.3rem, 3.2vw, 1.55rem);
-}
-
-.hero-metrics-foot {
-  margin: 1rem 0 0;
-  padding-top: 0.85rem;
-  border-top: 1px solid var(--line);
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: var(--muted);
-  text-align: center;
-  letter-spacing: -0.01em;
-}
-
-.hero-metrics-foot.cv-verbatim {
-  margin-top: 1rem;
-  margin-bottom: 0;
 }
 
 .hero-actions {
@@ -1091,9 +1060,6 @@ body.nav-menu-open {
   }
   .hero-metric-value {
     font-size: 1.25rem;
-  }
-  .hero-metric-date-line {
-    font-size: 0.62rem;
   }
 }
 
