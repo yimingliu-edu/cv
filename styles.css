@@ -261,13 +261,6 @@ a.btn-primary {
   margin: 0 0 0.5rem;
 }
 
-.hero .name-zh {
-  font-weight: 500;
-  font-size: 1.25rem;
-  color: var(--muted);
-  margin: 0 0 0.25rem;
-}
-
 .hero .role {
   font-size: 1.15rem;
   color: var(--muted);
