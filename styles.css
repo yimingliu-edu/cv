@@ -215,7 +215,8 @@ a:hover {
 }
 
 .hero-header {
-  max-width: 42rem;
+  max-width: 100%;
+  width: 100%;
 }
 
 .badge {
@@ -258,8 +259,10 @@ a:hover {
 
 /* Hero structured panels (summary + metrics) */
 .hero-panel {
-  max-width: 42rem;
+  max-width: 100%;
+  width: 100%;
   padding: 1.35rem 1.5rem;
+  box-sizing: border-box;
   background: rgba(255, 255, 255, 0.78);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
@@ -298,7 +301,8 @@ a:hover {
 }
 
 .hero-metrics-panel {
-  max-width: 42rem;
+  max-width: 100%;
+  width: 100%;
 }
 
 .hero-metric-cards {
@@ -465,7 +469,8 @@ section.alt {
 
 .section-head {
   margin-bottom: 1.5rem;
-  max-width: 42rem;
+  max-width: 100%;
+  width: 100%;
 }
 .section-head h2 {
   font-family: var(--font);
@@ -481,11 +486,11 @@ section.alt {
   margin: 0.35rem 0 0;
   color: var(--muted);
   font-size: 0.95rem;
-  max-width: 42rem;
+  max-width: 100%;
   line-height: 1.55;
 }
 
-/* Unified content surfaces — single frosted panel (no nested card stacks) */
+/* Unified content surfaces — full width within 1200px section (no narrow 46rem column) */
 main section:not(.hero) .cv-block,
 main section#research-interests > ul.cv-list,
 main section#honors > ul.honors-list {
@@ -494,7 +499,9 @@ main section#honors > ul.honors-list {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xs);
   padding: 1.5rem 1.5rem 1.35rem;
-  max-width: 46rem;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -509,7 +516,7 @@ main section:not(.hero) .cv-block .cv-list:last-child {
   margin-bottom: 0;
 }
 
-/* Readable wrapping in CV prose (avoid mid-word line breaks in English) */
+/* Readable wrapping — use full container width first; break-word only for overflow tokens / long strings */
 main section:not(.hero) .cv-block,
 main section:not(.hero) .cv-block .cv-list li,
 main section#research-interests > ul.cv-list li,
@@ -751,6 +758,8 @@ main section:not(.hero) .cv-block a {
 .pdf-section .pdf-grid {
   display: grid;
   gap: 1.5rem;
+  width: 100%;
+  max-width: 100%;
 }
 @media (min-width: 880px) {
   .pdf-section .pdf-grid {
@@ -1086,7 +1095,7 @@ body.nav-menu-open {
   font-weight: 600;
 }
 .cv-block {
-  max-width: 46rem;
+  max-width: 100%;
 }
 .cv-list {
   margin: 0 0 1rem;
@@ -1142,6 +1151,12 @@ body.nav-menu-open {
 }
 .contact-card .cv-verbatim {
   margin-bottom: 0.5rem;
+}
+
+#contact .contact-card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Research output — footnote strip (inside stack, not a second floating card) */
