@@ -504,6 +504,9 @@ main section#research .cv-block,
 main section#research .cv-block .cv-list li,
 main section#teaching .cv-block,
 main section#teaching .cv-block .cv-list li,
+main section#professional-services .cv-block,
+main section#quantitative .cv-block,
+main section#training .cv-block,
 main section#research-interests > ul.cv-list li,
 main section#honors > ul.honors-list li {
   word-break: normal;
@@ -719,20 +722,29 @@ main section:not(.hero) .cv-block a {
   border-bottom: none;
   padding-bottom: 0.35rem;
 }
-/* Research Experience — title-level intro inside card, then hairline-separated entries */
-#research .research-exp-intro {
+/* Stacked sections — intro line above first pub-entry (Research, Quantitative, Training) */
+.cv-stack-intro {
   padding-bottom: 1.25rem;
   margin-bottom: 0;
   border-bottom: 1px solid var(--line);
 }
-#research .research-exp-intro .cv-verbatim:last-child {
+.cv-stack-intro .cv-verbatim:last-child {
   margin-bottom: 0;
 }
 
 #research .cv-block .pub-entry .cv-list,
-#teaching .cv-block .pub-entry .cv-list {
+#teaching .cv-block .pub-entry .cv-list,
+#professional-services .pub-entry .cv-list,
+#training .pub-entry .cv-list {
   margin-top: 0.65rem;
   margin-bottom: 0;
+}
+#quantitative .pub-entry .qty-line-list {
+  margin-top: 0.65rem;
+  margin-bottom: 0;
+}
+.pub-entry > .services-sub:first-child {
+  margin-top: 0;
 }
 .pub-entry .cv-verbatim {
   margin-bottom: 0.45rem;
@@ -1136,10 +1148,12 @@ body.nav-menu-open {
 #panel-other .pub-subhead:first-child {
   margin-top: 0;
 }
+/* Subsection titles (Services, Quantitative categories, Workshops/Courses, etc.) — 24px site-wide */
 .services-sub {
   margin: 1.35rem 0 0.55rem;
   padding: 0.35rem 0 0.35rem 0.85rem;
-  font-size: 0.875rem;
+  font-size: 1.5rem;
+  line-height: 1.3;
   font-weight: 600;
   color: var(--ink);
   letter-spacing: -0.02em;
