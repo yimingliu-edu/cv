@@ -2,6 +2,9 @@
 :root {
   /* Subsection / role titles (Services, Quantitative, Teaching role line, etc.) — 20px */
   --type-subsection: 1.25rem;
+  /* Vertical padding around pub-entry dividers (1.5× prior 0.65 / 0.45) */
+  --pub-entry-pad-y: 0.975rem;
+  --pub-entry-pad-y-edge: 0.675rem;
   --bg: #fafafa;
   --bg-page: #fafafa;
   --bg-muted: #f4f4f5;
@@ -719,10 +722,10 @@ main section:not(.hero) .cv-block a {
   display: block;
 }
 
-/* Publication / stacked rows — compact vertical rhythm + hairline between items */
+/* Publication / stacked rows — vertical rhythm + hairline between items */
 .pub-entry {
   margin: 0;
-  padding: 0.65rem 0;
+  padding: var(--pub-entry-pad-y) 0;
   border-bottom: 1px solid var(--divider-row);
   background: transparent;
   border-radius: 0;
@@ -730,7 +733,7 @@ main section:not(.hero) .cv-block a {
 }
 .pub-entry:last-of-type {
   border-bottom: none;
-  padding-bottom: 0.45rem;
+  padding-bottom: var(--pub-entry-pad-y-edge);
 }
 /* Research Experience: explicit row dividers (avoids trailing-text-node :last-child quirks) */
 #research .cv-block > article.pub-entry:not(:last-of-type) {
@@ -739,26 +742,26 @@ main section:not(.hero) .cv-block a {
 #research .cv-block > article.pub-entry:last-of-type {
   border-bottom: none;
 }
-/* First/last row: align with tighter card padding (Teaching, Services, etc.) */
+/* First/last row: align with card padding (Teaching, Services, etc.) */
 main section:not(.hero) .cv-block > .pub-entry:first-of-type {
-  padding-top: 0.45rem;
+  padding-top: var(--pub-entry-pad-y-edge);
 }
 main section:not(.hero) .cv-block > .pub-entry:last-of-type {
-  padding-bottom: 0.45rem;
+  padding-bottom: var(--pub-entry-pad-y-edge);
 }
 #research-output .pub-panel > .pub-entry:first-of-type {
-  padding-top: 0.45rem;
+  padding-top: var(--pub-entry-pad-y-edge);
 }
 
 #research .cv-block .pub-entry .cv-list,
 #teaching .cv-block .pub-entry .cv-list,
 #professional-services .pub-entry .cv-list,
 #training .pub-entry .cv-list {
-  margin-top: 0.65rem;
+  margin-top: var(--pub-entry-pad-y);
   margin-bottom: 0;
 }
 #quantitative .pub-entry .qty-line-list {
-  margin-top: 0.65rem;
+  margin-top: var(--pub-entry-pad-y);
   margin-bottom: 0;
 }
 .pub-entry > .services-sub:first-child {
@@ -1163,7 +1166,7 @@ body.nav-menu-open {
 /* First publication row under each group title — match compact card rhythm */
 #panel-other > .pub-entry:first-of-type,
 #panel-other .pub-subhead + .pub-entry {
-  padding-top: 0.45rem;
+  padding-top: var(--pub-entry-pad-y-edge);
 }
 
 /* Subsection titles (Services, Quantitative categories, Workshops/Courses, etc.) — 20px site-wide */
