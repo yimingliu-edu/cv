@@ -483,7 +483,7 @@ section.alt {
   font-weight: 400;
 }
 
-/* Unified content surfaces — Superior-style flat white panels */
+/* Unified content surfaces — Superior-style flat white panels (tighter vertical padding) */
 main section:not(.hero) .cv-block,
 main section#research-interests > ul.cv-list,
 main section#honors > ul.honors-list {
@@ -491,7 +491,7 @@ main section#honors > ul.honors-list {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xs);
-  padding: 1.75rem 1.75rem 1.5rem;
+  padding: 1rem 1.5rem 0.95rem;
   max-width: 100%;
   width: 100%;
   box-sizing: border-box;
@@ -654,7 +654,7 @@ main section:not(.hero) .cv-block a {
   border-radius: var(--radius-lg);
   background: var(--bg-elevated);
   box-shadow: var(--shadow-xs);
-  padding: 1.25rem 1.25rem 0.5rem;
+  padding: 1rem 1.15rem 0.5rem;
   max-width: 100%;
 }
 
@@ -715,17 +715,28 @@ main section:not(.hero) .cv-block a {
   display: block;
 }
 
-/* Publication / stacked rows — no hairline dividers (spacing via padding only) */
+/* Publication / stacked rows — compact vertical rhythm + hairline between items */
 .pub-entry {
   margin: 0;
-  padding: 1.25rem 0;
-  border-bottom: none;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--line);
   background: transparent;
   border-radius: 0;
   box-shadow: none;
 }
 .pub-entry:last-of-type {
-  padding-bottom: 0.35rem;
+  border-bottom: none;
+  padding-bottom: 0.45rem;
+}
+/* First/last row: align with tighter card padding (Teaching, Services, etc.) */
+main section:not(.hero) .cv-block > .pub-entry:first-of-type {
+  padding-top: 0.45rem;
+}
+main section:not(.hero) .cv-block > .pub-entry:last-of-type {
+  padding-bottom: 0.45rem;
+}
+#research-output .pub-panel > .pub-entry:first-of-type {
+  padding-top: 0.45rem;
 }
 
 #research .cv-block .pub-entry .cv-list,
