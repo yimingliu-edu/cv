@@ -17,9 +17,23 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <a class="brand" href="#top">Yiming Liu</a>
-      <nav class="nav-links" aria-label="Primary">
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Open menu"
+      >
+        <span class="nav-toggle-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <nav id="primary-nav" class="nav-links" aria-label="Primary">
         <a href="#profile">Profile</a>
         <a href="#publications">Publications</a>
         <a href="#research">Research</a>
@@ -29,6 +43,7 @@
         <a class="nav-cta" href="assets/CV_YIMING_LIU.pdf" download>Download CV</a>
       </nav>
     </header>
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
     <main id="top">
       <section class="hero">
@@ -581,6 +596,52 @@
               else p.setAttribute("hidden", "");
             });
           });
+        });
+      })();
+      (function () {
+        var header = document.getElementById("site-header");
+        var toggle = document.getElementById("nav-toggle");
+        var nav = document.getElementById("primary-nav");
+        var backdrop = document.getElementById("nav-backdrop");
+        if (!header || !toggle || !nav) return;
+
+        function setOpen(open) {
+          header.classList.toggle("nav-open", open);
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+          if (backdrop) {
+            backdrop.setAttribute("aria-hidden", open ? "false" : "true");
+          }
+          document.body.classList.toggle("nav-menu-open", open);
+        }
+
+        function isMobileNav() {
+          return window.matchMedia("(max-width: 720px)").matches;
+        }
+
+        toggle.addEventListener("click", function () {
+          if (!isMobileNav()) return;
+          setOpen(!header.classList.contains("nav-open"));
+        });
+
+        if (backdrop) {
+          backdrop.addEventListener("click", function () {
+            setOpen(false);
+          });
+        }
+
+        nav.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            if (isMobileNav()) setOpen(false);
+          });
+        });
+
+        window.addEventListener("resize", function () {
+          if (!isMobileNav()) setOpen(false);
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && header.classList.contains("nav-open")) setOpen(false);
         });
       })();
     </script>
