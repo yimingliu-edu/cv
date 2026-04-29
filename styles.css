@@ -297,26 +297,45 @@ a:hover {
 
 .hero-metric-cards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: 0.5rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.hero-metric-card {
+/* Compact metric chips (Menoa-style small indicator cards) */
+.hero-metric-cards--grid {
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+}
+
+.hero-metric-chip {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.2rem;
-  min-height: 5.25rem;
-  padding: 0.85rem 0.5rem;
+  gap: 0.15rem;
+  min-height: 4.25rem;
+  padding: 0.55rem 0.45rem;
   text-align: center;
   background: linear-gradient(180deg, #fafaf9 0%, var(--bg) 100%);
   border: 1px solid var(--line-soft);
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   box-shadow: var(--shadow-xs);
+}
+
+.hero-metric-chip--date {
+  min-height: 4.25rem;
+  padding: 0.5rem 0.4rem;
+  justify-content: center;
+}
+
+.hero-metric-date-line {
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  text-wrap: balance;
 }
 
 .hero-metric-value {
@@ -334,6 +353,10 @@ a:hover {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.hero-metric-chip .hero-metric-value {
+  font-size: clamp(1.3rem, 3.2vw, 1.55rem);
 }
 
 .hero-metrics-foot {
@@ -476,6 +499,26 @@ main section#honors > ul.honors-list {
 
 main section:not(.hero) .cv-block .cv-list:last-child {
   margin-bottom: 0;
+}
+
+/* Readable wrapping in CV prose (avoid mid-word line breaks in English) */
+main section:not(.hero) .cv-block,
+main section:not(.hero) .cv-block .cv-list li,
+main section#research-interests > ul.cv-list li,
+main section#honors > ul.honors-list li {
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: manual;
+}
+main section:not(.hero) .cv-block a {
+  overflow-wrap: anywhere;
+}
+
+.hero-intro-copy p,
+.hero-intro-copy a {
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: manual;
 }
 
 .lead {
@@ -941,24 +984,18 @@ body.nav-menu-open {
     grid-template-columns: 1fr;
     max-width: 100%;
   }
-  .hero-metric-cards {
-    gap: 0.5rem;
+  .hero-metric-cards--grid {
+    gap: 0.45rem;
   }
-  .hero-metric-card {
-    min-height: 4.75rem;
-    padding: 0.65rem 0.35rem;
+  .hero-metric-chip {
+    min-height: 3.85rem;
+    padding: 0.45rem 0.3rem;
   }
   .hero-metric-value {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
   }
-}
-
-@media (max-width: 360px) {
-  .hero-metric-cards {
-    grid-template-columns: 1fr;
-    max-width: 12rem;
-    margin-left: auto;
-    margin-right: auto;
+  .hero-metric-date-line {
+    font-size: 0.62rem;
   }
 }
 
@@ -1044,4 +1081,36 @@ body.nav-menu-open {
   border-radius: var(--radius);
   box-shadow: var(--shadow-xs);
   max-width: 46rem;
+}
+
+/* Quantitative — dot-separated lines (Word-style checkmarks → typographic dot list) */
+.qty-line-list {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.qty-line-list li {
+  position: relative;
+  padding-left: 1.05em;
+  margin: 0 0 0.4rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--ink);
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.qty-line-list li:last-child {
+  margin-bottom: 0;
+}
+.qty-line-list li::before {
+  content: ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-weight: 700;
+  line-height: inherit;
+}
+.cv-block > .qty-line-list:last-child {
+  margin-bottom: 0;
 }
