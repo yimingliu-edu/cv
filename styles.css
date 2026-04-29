@@ -7,6 +7,8 @@
   --ink: #0a0a0a;
   --muted: #71717a;
   --line: #e4e4e7;
+  /* Slightly stronger hairlines between rows inside cards (Teaching, Research, etc.) */
+  --divider-row: #d4d4d8;
   --line-soft: #f4f4f5;
   --accent: #18181b;
   --accent-link: #2563eb;
@@ -719,7 +721,7 @@ main section:not(.hero) .cv-block a {
 .pub-entry {
   margin: 0;
   padding: 0.65rem 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--divider-row);
   background: transparent;
   border-radius: 0;
   box-shadow: none;
@@ -727,6 +729,13 @@ main section:not(.hero) .cv-block a {
 .pub-entry:last-of-type {
   border-bottom: none;
   padding-bottom: 0.45rem;
+}
+/* Research Experience: explicit row dividers (avoids trailing-text-node :last-child quirks) */
+#research .cv-block > article.pub-entry:not(:last-of-type) {
+  border-bottom: 1px solid var(--divider-row);
+}
+#research .cv-block > article.pub-entry:last-of-type {
+  border-bottom: none;
 }
 /* First/last row: align with tighter card padding (Teaching, Services, etc.) */
 main section:not(.hero) .cv-block > .pub-entry:first-of-type {
