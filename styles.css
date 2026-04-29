@@ -30,7 +30,8 @@
   --max: 1200px;
   --nav-h: 64px;
   --section-pad-x: clamp(1rem, 4vw, 1.5rem);
-  --section-pad-y: clamp(2.5rem, 5vw, 4rem);
+  /* Section block padding (y); −20% vs prior for tighter gaps between major sections */
+  --section-pad-y: clamp(2rem, 4vw, 3.2rem);
   --text-body: 1rem;
   --leading-body: 1.7;
   --tracking-tight: -0.035em;
