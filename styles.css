@@ -491,8 +491,7 @@ section.alt {
 }
 
 /* Unified content surfaces — Superior-style flat white panels (tighter vertical padding) */
-main section:not(.hero) .cv-block,
-main section#research-interests > ul.cv-list {
+main section:not(.hero) .cv-block {
   background: var(--bg-elevated);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -501,11 +500,6 @@ main section#research-interests > ul.cv-list {
   max-width: 100%;
   width: 100%;
   box-sizing: border-box;
-}
-
-main section#research-interests > ul.cv-list {
-  margin: 0;
-  list-style-position: outside;
 }
 
 main section:not(.hero) .cv-block .cv-list:last-child {
@@ -521,8 +515,7 @@ main section#teaching .cv-block,
 main section#teaching .cv-block .cv-list li,
 main section#professional-services .cv-block,
 main section#quantitative .cv-block,
-main section#training .cv-block,
-main section#research-interests > ul.cv-list li {
+main section#training .cv-block {
   word-break: normal;
   overflow-wrap: break-word;
   hyphens: manual;
