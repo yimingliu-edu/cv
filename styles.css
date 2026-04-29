@@ -311,6 +311,22 @@ section.alt {
   margin: 0 0 0.35rem;
   line-height: 1.45;
 }
+.corresponding-note {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.authors-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0.35rem 0 0.2rem;
+}
+
 .pub-item .authors {
   font-size: 0.88rem;
   color: var(--muted);
