@@ -1,26 +1,27 @@
-/* Editorial academic portfolio — Menoa / Framer-inspired surfaces (soft lift, warm canvas) */
+/* EarlyBird / Framer launch-style canvas — cool gradient, flat stacks, max 1200px */
 :root {
-  --bg: #f4f2ee;
+  --bg: #f1f5f9;
+  --bg-page: linear-gradient(165deg, #f8fafc 0%, #f1f5f9 42%, #e8eef5 100%);
   --bg-elevated: #ffffff;
-  --ink: #14120f;
-  --muted: #5c5854;
-  --line: rgba(20, 18, 15, 0.1);
-  --line-soft: rgba(20, 18, 15, 0.07);
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: rgba(15, 23, 42, 0.1);
+  --line-soft: rgba(15, 23, 42, 0.07);
   --accent: #1e3a5f;
-  --accent-soft: rgba(30, 58, 95, 0.08);
-  --radius: 14px;
+  --accent-soft: rgba(30, 58, 95, 0.1);
+  --radius: 12px;
   --radius-sm: 8px;
-  --radius-lg: 18px;
+  --radius-lg: 16px;
   --radius-pill: 999px;
-  /* Layered shadows (reference: Framer portfolio templates e.g. menoa-template.framer.website) */
-  --shadow-xs: 0 1px 2px rgba(20, 18, 15, 0.05);
-  --shadow-sm: 0 1px 2px rgba(20, 18, 15, 0.04), 0 4px 16px rgba(20, 18, 15, 0.06);
-  --shadow-md: 0 2px 6px rgba(20, 18, 15, 0.05), 0 12px 40px rgba(20, 18, 15, 0.08);
-  --shadow-nav: 0 1px 0 rgba(20, 18, 15, 0.06), 0 8px 24px rgba(20, 18, 15, 0.04);
-  /* 全站仅使用 Inter（回退仅用泛 sans-serif，避免 system-ui 与 Inter 混用观感） */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05), 0 8px 24px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 20px rgba(15, 23, 42, 0.08);
+  --shadow-nav: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 4px 24px rgba(15, 23, 42, 0.05);
   --font: "Inter", sans-serif;
-  --max: 1100px;
+  --max: 1200px;
   --nav-h: 72px;
+  --section-pad-x: clamp(1rem, 4vw, 1.5rem);
+  --section-pad-y: clamp(2.75rem, 6vw, 4.25rem);
 }
 
 *,
@@ -37,10 +38,12 @@ html {
 body {
   margin: 0;
   font-family: var(--font);
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.65;
+  letter-spacing: -0.011em;
   color: var(--ink);
-  background: var(--bg);
+  background: var(--bg-page);
+  background-color: var(--bg);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -70,8 +73,9 @@ a:hover {
   justify-content: space-between;
   gap: 1rem;
   padding: 0 1.5rem;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line-soft);
   box-shadow: var(--shadow-nav);
 }
@@ -198,7 +202,7 @@ a:hover {
 
 /* Hero */
 .hero {
-  padding: 4rem 1.5rem 3.5rem;
+  padding: clamp(3rem, 8vw, 4.5rem) var(--section-pad-x) clamp(2.5rem, 6vw, 3.5rem);
   margin: 0 auto;
 }
 
@@ -256,10 +260,12 @@ a:hover {
 .hero-panel {
   max-width: 42rem;
   padding: 1.35rem 1.5rem;
-  background: var(--bg-elevated);
+  background: rgba(255, 255, 255, 0.78);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-xs);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .hero-panel-label {
@@ -317,7 +323,7 @@ a:hover {
   min-height: 4.25rem;
   padding: 0.55rem 0.45rem;
   text-align: center;
-  background: linear-gradient(180deg, #fafaf9 0%, var(--bg) 100%);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-xs);
@@ -447,14 +453,14 @@ a:hover {
 
 /* Sections */
 section {
-  padding: 4rem 1.5rem;
+  padding: var(--section-pad-y) var(--section-pad-x);
   max-width: var(--max);
   margin: 0 auto;
+  width: 100%;
 }
 section.alt {
-  background: linear-gradient(180deg, rgba(30, 58, 95, 0.045) 0%, rgba(244, 242, 238, 0.5) 100%);
-  border-top: 1px solid var(--line-soft);
-  border-bottom: 1px solid var(--line-soft);
+  background: transparent;
+  border: none;
 }
 
 .section-head {
@@ -479,16 +485,18 @@ section.alt {
   line-height: 1.55;
 }
 
-/* Unified content surfaces (Menoa-style raised cards on warm canvas) */
+/* Unified content surfaces — single frosted panel (no nested card stacks) */
 main section:not(.hero) .cv-block,
 main section#research-interests > ul.cv-list,
 main section#honors > ul.honors-list {
-  background: var(--bg-elevated);
+  background: rgba(255, 255, 255, 0.78);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-xs);
   padding: 1.5rem 1.5rem 1.35rem;
   max-width: 46rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 main section#research-interests > ul.cv-list,
@@ -543,19 +551,21 @@ main section:not(.hero) .cv-block a {
   font-weight: 500;
 }
 
-/* Cards & lists */
+/* Cards & lists — reserved for PDF / contact single panels */
 .card {
-  background: var(--bg-elevated);
+  background: rgba(255, 255, 255, 0.85);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
   padding: 1.35rem 1.45rem;
   margin-bottom: 1rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-xs);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 @media (hover: hover) and (pointer: fine) {
   main section .card:hover {
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
     transform: translateY(-1px);
   }
 }
@@ -636,42 +646,105 @@ main section:not(.hero) .cv-block a {
   border: 1px solid var(--line);
 }
 
-/* Pub tabs */
+/* Research Output — one glass stack, flat tabs, row entries (no card-in-card) */
+#research-output .research-output-stack {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-xs);
+  padding: 0.75rem 1rem 0.25rem;
+  max-width: 100%;
+}
+
+/* Pub tabs — text + underline active (EarlyBird-style) */
 .pub-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.25rem;
-  padding: 0.65rem 0.75rem;
-  background: var(--bg-elevated);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  align-items: flex-end;
+  gap: 0.15rem 0.25rem;
+  margin: 0 0 0.75rem;
+  padding: 0 0 0.65rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid var(--line-soft);
 }
 .pub-tab {
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--line-soft);
-  background: rgba(255, 255, 255, 0.7);
-  font-size: 0.85rem;
+  position: relative;
+  padding: 0.5rem 0.65rem 0.6rem;
+  margin-bottom: -1px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  border: none;
+  background: transparent;
+  font-size: clamp(0.75rem, 2.4vw, 0.875rem);
   font-weight: 600;
   cursor: pointer;
   font-family: var(--font);
   color: var(--muted);
-  box-shadow: var(--shadow-xs);
-  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: none;
+  line-height: 1.35;
+  transition: color 0.15s ease, background 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.pub-tab:hover {
+  color: var(--ink);
+  background: rgba(30, 58, 95, 0.05);
 }
 .pub-tab[aria-selected="true"] {
-  background: var(--ink);
-  color: #fff;
-  border-color: var(--ink);
-  box-shadow: 0 4px 14px rgba(20, 18, 15, 0.2);
+  background: rgba(30, 58, 95, 0.08);
+  color: var(--ink);
+  box-shadow: none;
+}
+.pub-tab[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  right: 0.35rem;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
 }
 .pub-panel {
   display: none;
 }
 .pub-panel.active {
   display: block;
+}
+
+/* Publication rows — dividers only, no inner cards */
+.pub-entry {
+  margin: 0;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--line-soft);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+.pub-panel .pub-entry:last-child {
+  border-bottom: none;
+  padding-bottom: 0.35rem;
+}
+.pub-entry .cv-verbatim {
+  margin-bottom: 0.45rem;
+}
+.pub-entry .cv-verbatim:last-of-type {
+  margin-bottom: 0;
+}
+.pub-entry .cv-link {
+  margin: 0.35rem 0 0;
+  padding-top: 0.35rem;
+  border-top: none;
+}
+#panel-other .pub-subhead {
+  margin-left: 0;
+  margin-right: 0;
+}
+#panel-other .pub-subhead:first-child {
+  margin-top: 0.25rem;
 }
 
 /* PDF block */
@@ -1041,13 +1114,13 @@ body.nav-menu-open {
 }
 .pub-subhead {
   margin: 1.75rem 0 0.85rem;
-  padding: 0.35rem 0 0.35rem 1rem;
-  font-size: 1rem;
+  padding: 0.35rem 0 0.35rem 0.85rem;
+  font-size: clamp(0.95rem, 2.5vw, 1rem);
   font-weight: 600;
   color: var(--ink);
   letter-spacing: 0.02em;
   border-left: 3px solid var(--accent);
-  background: linear-gradient(90deg, var(--accent-soft) 0%, transparent 48%);
+  background: rgba(30, 58, 95, 0.05);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 #panel-other .pub-subhead:first-child {
@@ -1071,16 +1144,20 @@ body.nav-menu-open {
   margin-bottom: 0.5rem;
 }
 
-/* Research output — footnote strip (aligned with card surfaces) */
+/* Research output — footnote strip (inside stack, not a second floating card) */
 .module-note {
-  margin: 0 0 1.15rem;
-  padding: 0.85rem 1.1rem;
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.85rem;
   font-size: 0.9rem;
-  background: var(--bg-elevated);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-xs);
-  max-width: 46rem;
+  background: rgba(30, 58, 95, 0.06);
+  border: none;
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+  max-width: none;
+}
+#research-output .module-note {
+  margin-top: 0.15rem;
 }
 
 /* Quantitative — dot-separated lines (Word-style checkmarks → typographic dot list) */
@@ -1113,4 +1190,33 @@ body.nav-menu-open {
 }
 .cv-block > .qty-line-list:last-child {
   margin-bottom: 0;
+}
+
+/* H5 / narrow — Research Output stack & tabs */
+@media (max-width: 640px) {
+  #research-output .research-output-stack {
+    padding: 0.5rem 0.65rem 0.15rem;
+    border-radius: var(--radius);
+  }
+  .pub-tab {
+    padding: 0.45rem 0.45rem 0.55rem;
+  }
+}
+
+/* Safe area (notch / home indicator) */
+@supports (padding: max(0px)) {
+  .site-header {
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+  }
+  section,
+  .hero {
+    padding-left: max(var(--section-pad-x), env(safe-area-inset-left));
+    padding-right: max(var(--section-pad-x), env(safe-area-inset-right));
+  }
+  footer {
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+  }
 }
