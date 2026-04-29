@@ -492,8 +492,7 @@ section.alt {
 
 /* Unified content surfaces — Superior-style flat white panels (tighter vertical padding) */
 main section:not(.hero) .cv-block,
-main section#research-interests > ul.cv-list,
-main section#honors > ul.honors-list {
+main section#research-interests > ul.cv-list {
   background: var(--bg-elevated);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -504,8 +503,7 @@ main section#honors > ul.honors-list {
   box-sizing: border-box;
 }
 
-main section#research-interests > ul.cv-list,
-main section#honors > ul.honors-list {
+main section#research-interests > ul.cv-list {
   margin: 0;
   list-style-position: outside;
 }
@@ -524,8 +522,7 @@ main section#teaching .cv-block .cv-list li,
 main section#professional-services .cv-block,
 main section#quantitative .cv-block,
 main section#training .cv-block,
-main section#research-interests > ul.cv-list li,
-main section#honors > ul.honors-list li {
+main section#research-interests > ul.cv-list li {
   word-break: normal;
   overflow-wrap: break-word;
   hyphens: manual;
@@ -1131,9 +1128,6 @@ body.nav-menu-open {
 }
 .cv-list li {
   margin-bottom: 0.35rem;
-}
-.honors-list li {
-  margin-bottom: 0.5rem;
 }
 .training-list li {
   margin-bottom: 0.25rem;
