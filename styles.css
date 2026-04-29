@@ -500,6 +500,8 @@ main section:not(.hero) .cv-block .cv-list:last-child {
 /* Readable wrapping — use full container width first; break-word only for overflow tokens / long strings */
 main section:not(.hero) .cv-block,
 main section:not(.hero) .cv-block .cv-list li,
+main section#research .research-exp-stack,
+main section#research .research-exp-stack .cv-list li,
 main section#research-interests > ul.cv-list li,
 main section#honors > ul.honors-list li {
   word-break: normal;
@@ -634,7 +636,9 @@ main section:not(.hero) .cv-block a {
 }
 
 /* Research Output — single panel + segmented tabs (Superior / integrations-style) */
-#research-output .research-output-stack {
+/* Research Experience — same card + hairline rows as publication entries */
+#research-output .research-output-stack,
+#research .research-exp-stack {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--bg-elevated);
@@ -712,6 +716,14 @@ main section:not(.hero) .cv-block a {
 .pub-panel .pub-entry:last-child {
   border-bottom: none;
   padding-bottom: 0.35rem;
+}
+#research .research-exp-stack .pub-entry:last-child {
+  border-bottom: none;
+  padding-bottom: 0.35rem;
+}
+#research .research-exp-stack .pub-entry .cv-list {
+  margin-top: 0.65rem;
+  margin-bottom: 0;
 }
 .pub-entry .cv-verbatim {
   margin-bottom: 0.45rem;
@@ -1187,7 +1199,8 @@ body.nav-menu-open {
 
 /* H5 — Research Output: horizontal tab scroll, tighter stack */
 @media (max-width: 768px) {
-  #research-output .research-output-stack {
+  #research-output .research-output-stack,
+  #research .research-exp-stack {
     padding: 1rem 0.75rem 0.35rem;
     border-radius: var(--radius-lg);
   }
@@ -1209,7 +1222,8 @@ body.nav-menu-open {
   }
 }
 @media (max-width: 480px) {
-  #research-output .research-output-stack {
+  #research-output .research-output-stack,
+  #research .research-exp-stack {
     padding: 0.75rem 0.6rem 0.25rem;
   }
 }
