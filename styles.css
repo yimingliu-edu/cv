@@ -718,6 +718,16 @@ main section:not(.hero) .cv-block a {
   border-bottom: none;
   padding-bottom: 0.35rem;
 }
+/* Research Experience — title-level intro inside card, then hairline-separated entries */
+#research .research-exp-intro {
+  padding-bottom: 1.25rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--line);
+}
+#research .research-exp-intro .cv-verbatim:last-child {
+  margin-bottom: 0;
+}
+
 #research .cv-block > .pub-entry:last-child,
 #teaching .cv-block > .pub-entry:last-child {
   border-bottom: none;
