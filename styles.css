@@ -8,8 +8,8 @@
   --accent: #1e3a5f;
   --accent-soft: rgba(30, 58, 95, 0.08);
   --radius: 12px;
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-serif: "Inter", system-ui, sans-serif;
+  /* 全站仅使用 Inter（回退仅用泛 sans-serif，避免 system-ui 与 Inter 混用观感） */
+  --font: "Inter", sans-serif;
   --max: 1100px;
   --nav-h: 72px;
 }
@@ -22,17 +22,24 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: var(--font-sans);
+  font-family: var(--font);
 }
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: 16px;
   line-height: 1.65;
   color: var(--ink);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
+}
+
+input,
+select,
+textarea,
+optgroup {
+  font-family: var(--font);
 }
 
 a {
@@ -59,7 +66,7 @@ a:hover {
 }
 
 .brand {
-  font-family: var(--font-serif);
+  font-family: var(--font);
   font-weight: 600;
   font-size: 1.1rem;
   letter-spacing: -0.02em;
@@ -128,7 +135,7 @@ a:hover {
 }
 
 .hero h1 {
-  font-family: var(--font-serif);
+  font-family: var(--font);
   font-size: clamp(2.25rem, 5vw, 3.25rem);
   font-weight: 600;
   letter-spacing: -0.03em;
@@ -167,7 +174,7 @@ a:hover {
   font-weight: 600;
   border: none;
   cursor: pointer;
-  font-family: inherit;
+  font-family: var(--font);
   text-decoration: none;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -206,7 +213,7 @@ a:hover {
 }
 .metric strong {
   display: block;
-  font-family: var(--font-serif);
+  font-family: var(--font);
   font-size: 1.75rem;
   color: var(--ink);
 }
@@ -233,7 +240,7 @@ section.alt {
   margin-bottom: 1.75rem;
 }
 .section-head h2 {
-  font-family: var(--font-serif);
+  font-family: var(--font);
   font-size: 1.75rem;
   font-weight: 600;
   margin: 0 0 0.35rem;
@@ -277,7 +284,7 @@ section.alt {
   margin-bottom: 1rem;
 }
 .card h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font);
   font-size: 1.1rem;
   margin: 0 0 0.35rem;
   font-weight: 600;
@@ -306,7 +313,7 @@ section.alt {
   border-bottom: none;
 }
 .pub-item h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font);
   font-size: 1rem;
   font-weight: 600;
   margin: 0 0 0.35rem;
@@ -368,7 +375,7 @@ section.alt {
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  font-family: inherit;
+  font-family: var(--font);
   color: var(--muted);
 }
 .pub-tab[aria-selected="true"] {
