@@ -586,7 +586,7 @@ main section:not(.hero) .cv-block a {
   padding: 1.1rem 0;
   border-bottom: 1px solid var(--line);
 }
-.pub-item:last-child {
+.pub-item:last-of-type {
   border-bottom: none;
 }
 .pub-item h3 {
@@ -705,7 +705,8 @@ main section:not(.hero) .cv-block a {
   display: block;
 }
 
-/* Publication rows — hairline dividers */
+/* Publication rows — hairline dividers between items only (not after last row).
+   Use :last-of-type so trailing whitespace text nodes after </article> do not break :last-child. */
 .pub-entry {
   margin: 0;
   padding: 1.25rem 0;
@@ -714,7 +715,7 @@ main section:not(.hero) .cv-block a {
   border-radius: 0;
   box-shadow: none;
 }
-.pub-panel .pub-entry:last-child {
+.pub-entry:last-of-type {
   border-bottom: none;
   padding-bottom: 0.35rem;
 }
@@ -728,11 +729,6 @@ main section:not(.hero) .cv-block a {
   margin-bottom: 0;
 }
 
-#research .cv-block > .pub-entry:last-child,
-#teaching .cv-block > .pub-entry:last-child {
-  border-bottom: none;
-  padding-bottom: 0.35rem;
-}
 #research .cv-block .pub-entry .cv-list,
 #teaching .cv-block .pub-entry .cv-list {
   margin-top: 0.65rem;
@@ -800,6 +796,10 @@ main section:not(.hero) .cv-block a {
   gap: 1rem;
   padding: 1rem 0;
   border-bottom: 1px solid var(--line);
+}
+.timeline-item:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0.35rem;
 }
 @media (max-width: 600px) {
   .timeline-item {
@@ -1194,7 +1194,7 @@ body.nav-menu-open {
   word-break: normal;
   overflow-wrap: break-word;
 }
-.qty-line-list li:last-child {
+.qty-line-list li:last-of-type {
   margin-bottom: 0;
 }
 .qty-line-list li::before {
