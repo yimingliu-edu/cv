@@ -771,3 +771,76 @@ body.nav-menu-open {
     max-width: 100%;
   }
 }
+
+/* Word-aligned CV blocks */
+.cv-verbatim {
+  margin: 0 0 0.65rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.cv-verbatim:last-child {
+  margin-bottom: 0;
+}
+.cv-block .cv-verbatim strong {
+  font-weight: 600;
+}
+.cv-block {
+  max-width: 46rem;
+}
+.cv-list {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+.cv-list li {
+  margin-bottom: 0.35rem;
+}
+.honors-list li {
+  margin-bottom: 0.5rem;
+}
+.training-list li {
+  margin-bottom: 0.25rem;
+}
+.cv-link {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+.cv-link:last-child {
+  margin-bottom: 0;
+}
+.hero-metrics {
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+  max-width: 28rem;
+}
+.pub-subhead {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+#panel-other .pub-subhead:first-child {
+  margin-top: 0;
+}
+.services-sub {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.services-sub:first-child {
+  margin-top: 0;
+}
+.services-block .cv-verbatim {
+  margin-bottom: 0.35rem;
+}
+.contact-card .cv-verbatim {
+  margin-bottom: 0.5rem;
+}
