@@ -725,6 +725,10 @@ main section:not(.hero) .cv-block a {
   border-bottom: none;
   padding-bottom: var(--pub-entry-pad-y-edge);
 }
+/* No line under the last item of a subgroup (e.g. before next h3 group title in Research Output) */
+.pub-entry:has(+ h3.pub-subhead) {
+  border-bottom: none;
+}
 /* Research Experience: explicit row dividers (avoids trailing-text-node :last-child quirks) */
 #research .cv-block > article.pub-entry:not(:last-of-type) {
   border-bottom: 1px solid var(--divider-row);
