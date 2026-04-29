@@ -1115,6 +1115,8 @@ body.nav-menu-open {
 .cv-list {
   margin: 0 0 1rem;
   padding-left: 1.25rem;
+  list-style-type: disc;
+  list-style-position: outside;
   color: var(--ink);
   font-size: 0.9375rem;
   line-height: 1.65;
@@ -1214,33 +1216,25 @@ body.nav-menu-open {
   margin-top: 0.15rem;
 }
 
-/* Quantitative — dot-separated lines (Word-style checkmarks → typographic dot list) */
+/* Quantitative — same disc bullets as Training / Services lists (Fig. 2) */
 .qty-line-list {
-  list-style: none;
+  list-style-type: disc;
+  list-style-position: outside;
   margin: 0 0 1rem;
-  padding: 0;
+  padding-left: 1.25rem;
 }
 .qty-line-list li {
-  position: relative;
-  padding-left: 1.05em;
   margin: 0 0 0.4rem;
+  padding-left: 0;
   font-size: 0.9375rem;
   line-height: 1.65;
   color: var(--ink);
   word-break: normal;
   overflow-wrap: break-word;
+  display: list-item;
 }
 .qty-line-list li:last-of-type {
   margin-bottom: 0;
-}
-.qty-line-list li::before {
-  content: ".";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent);
-  font-weight: 600;
-  line-height: inherit;
 }
 .cv-block > .qty-line-list:last-child {
   margin-bottom: 0;
