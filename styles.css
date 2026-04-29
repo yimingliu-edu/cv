@@ -587,9 +587,6 @@ main section:not(.hero) .cv-block a {
 
 .pub-item {
   padding: 1.1rem 0;
-  border-bottom: 1px solid var(--line);
-}
-.pub-item:last-of-type {
   border-bottom: none;
 }
 .pub-item h3 {
@@ -708,25 +705,23 @@ main section:not(.hero) .cv-block a {
   display: block;
 }
 
-/* Publication rows — hairline dividers between items only (not after last row).
-   Use :last-of-type so trailing whitespace text nodes after </article> do not break :last-child. */
+/* Publication / stacked rows — no hairline dividers (spacing via padding only) */
 .pub-entry {
   margin: 0;
   padding: 1.25rem 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: none;
   background: transparent;
   border-radius: 0;
   box-shadow: none;
 }
 .pub-entry:last-of-type {
-  border-bottom: none;
   padding-bottom: 0.35rem;
 }
-/* Stacked sections — intro line above first pub-entry (Research, Quantitative, Training) */
+/* Stacked sections — intro above first pub-entry (Research, Quantitative, Training) */
 .cv-stack-intro {
   padding-bottom: 1.25rem;
   margin-bottom: 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: none;
 }
 .cv-stack-intro .cv-verbatim:last-child {
   margin-bottom: 0;
@@ -807,10 +802,9 @@ main section:not(.hero) .cv-block a {
   grid-template-columns: 100px 1fr;
   gap: 1rem;
   padding: 1rem 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: none;
 }
 .timeline-item:last-of-type {
-  border-bottom: none;
   padding-bottom: 0.35rem;
 }
 @media (max-width: 600px) {
@@ -971,7 +965,7 @@ body.nav-menu-open {
     flex-shrink: 0;
     padding-bottom: 1.25rem;
     margin-bottom: 1rem;
-    border-bottom: 1px solid var(--line);
+    border-bottom: none;
   }
   .nav-mobile-brand {
     position: relative;
@@ -1136,14 +1130,14 @@ body.nav-menu-open {
 }
 .pub-subhead {
   margin: 1.75rem 0 0.85rem;
-  padding: 0.45rem 0.75rem 0.45rem 0.85rem;
+  padding: 0.45rem 0.75rem;
   font-size: clamp(0.875rem, 2.4vw, 0.9375rem);
   font-weight: 600;
   color: var(--ink);
   letter-spacing: -0.02em;
-  border-left: 3px solid var(--accent);
+  border: none;
   background: var(--bg-muted);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: var(--radius-sm);
 }
 #panel-other .pub-subhead:first-child {
   margin-top: 0;
@@ -1151,13 +1145,13 @@ body.nav-menu-open {
 /* Subsection titles (Services, Quantitative categories, Workshops/Courses, etc.) — 24px site-wide */
 .services-sub {
   margin: 1.35rem 0 0.55rem;
-  padding: 0.35rem 0 0.35rem 0.85rem;
+  padding: 0.35rem 0;
   font-size: 1.5rem;
   line-height: 1.3;
   font-weight: 600;
   color: var(--ink);
   letter-spacing: -0.02em;
-  border-left: 3px solid #d4d4d8;
+  border: none;
 }
 .services-sub:first-child {
   margin-top: 0;
@@ -1165,6 +1159,14 @@ body.nav-menu-open {
 .services-block .cv-verbatim {
   margin-bottom: 0.35rem;
 }
+
+/* Teaching Experience — role line (e.g. Guest Lecturer | …) at 24px */
+#teaching .pub-entry > p.cv-verbatim:first-child strong {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
 .contact-card .cv-verbatim {
   margin-bottom: 0.5rem;
 }
@@ -1183,7 +1185,6 @@ body.nav-menu-open {
   line-height: 1.55;
   background: var(--bg-muted);
   border: none;
-  border-left: 3px solid var(--accent);
   border-radius: var(--radius-sm);
   box-shadow: none;
   max-width: none;
