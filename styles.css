@@ -472,6 +472,16 @@ section.alt {
   line-height: 1.65;
   letter-spacing: -0.01em;
 }
+/* Section subtitle under h2 (outside cards) — slightly larger than card body */
+.section-head .section-desc {
+  margin: 0.65rem 0 0;
+  color: var(--ink);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  max-width: 100%;
+  letter-spacing: -0.012em;
+  font-weight: 400;
+}
 
 /* Unified content surfaces — Superior-style flat white panels */
 main section:not(.hero) .cv-block,
@@ -716,15 +726,6 @@ main section:not(.hero) .cv-block a {
 }
 .pub-entry:last-of-type {
   padding-bottom: 0.35rem;
-}
-/* Stacked sections — intro above first pub-entry (Research, Quantitative, Training) */
-.cv-stack-intro {
-  padding-bottom: 1.25rem;
-  margin-bottom: 0;
-  border-bottom: none;
-}
-.cv-stack-intro .cv-verbatim:last-child {
-  margin-bottom: 0;
 }
 
 #research .cv-block .pub-entry .cv-list,
