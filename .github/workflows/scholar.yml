@@ -73,8 +73,17 @@ jobs:
           git add data/scholar.json
           if git diff --staged --quiet; then
             echo "No changes to scholar.json"
+            echo "CHANGED=false" >> $GITHUB_ENV
           else
             TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
             git commit -m "chore(scholar): refresh metrics [skip ci] ($TS)"
             git push origin HEAD:main
+            echo "CHANGED=true" >> $GITHUB_ENV
           fi
+
+      - name: Deploy to Cloudflare Pages
+        run: |
+          echo "Deploying static site to Cloudflare Pages..."
+          npx wrangler pages deploy . --project-name yimingliu-cv --branch main --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
