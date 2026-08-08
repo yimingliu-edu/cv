@@ -1,0 +1,20 @@
+{
+  "citations": 180,
+  "h_index": 7,
+  "i10_index": 7,
+  "yearly": {
+    "2022": 2,
+    "2023": 5,
+    "2024": 17,
+    "2025": 70,
+    "2026": 35
+  },
+  "publications": [],
+  "profile_url": "https://scholar.google.com/citations?user=lmbr2XYAAAAJ&hl=en",
+  "last_updated": "2026-08-08T10:19:12+0800",
+  "source": "google_scholar",
+  "extra": {
+    "works_count": 14,
+    "openalex_id": "https://openalex.org/A5100449929"
+  }
+}

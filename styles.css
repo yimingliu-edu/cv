@@ -297,6 +297,39 @@ a.btn-primary {
   color: var(--muted);
 }
 
+.hero-panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+}
+
+.hero-panel-head .hero-panel-label {
+  margin: 0;
+}
+
+.hero-panel-link {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent-link);
+  text-decoration: none;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+}
+
+.hero-panel-link:hover {
+  text-decoration: underline;
+}
+
+.hero-metric-footnote {
+  margin: 0.75rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--muted);
+  letter-spacing: -0.005em;
+}
+
 .hero-intro-copy {
   margin: 0;
 }

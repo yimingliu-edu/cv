@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=47a320b" />
+    <link rel="stylesheet" href="styles.css?v=scholar-1" />
   </head>
   <body>
     <header class="site-header" id="site-header">
@@ -90,23 +90,36 @@
 
           <div
             class="hero-panel hero-metrics-panel"
-            aria-label="Scholar metrics: 150 citations, h-index 6, i10-index 4"
+            data-scholar-panel
+            aria-label="Scholar metrics"
           >
-            <h2 class="hero-panel-label">Scholar metrics</h2>
+            <div class="hero-panel-head">
+              <h2 class="hero-panel-label">Scholar metrics</h2>
+              <a
+                class="hero-panel-link"
+                href="https://scholar.google.com/citations?user=lmbr2XYAAAAJ&amp;hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View profile →</a
+              >
+            </div>
             <ul class="hero-metric-cards hero-metric-cards--grid">
               <li class="hero-metric-chip">
-                <span class="hero-metric-value">152</span>
+                <span class="hero-metric-value" data-scholar="citations">—</span>
                 <span class="hero-metric-name">Citations</span>
               </li>
               <li class="hero-metric-chip">
-                <span class="hero-metric-value">6</span>
+                <span class="hero-metric-value" data-scholar="h_index">—</span>
                 <span class="hero-metric-name">h-index</span>
               </li>
               <li class="hero-metric-chip">
-                <span class="hero-metric-value">4</span>
+                <span class="hero-metric-value" data-scholar="i10_index">—</span>
                 <span class="hero-metric-name">i10-index</span>
               </li>
             </ul>
+            <p class="hero-metric-footnote" data-scholar-updated>
+              Auto-updated daily from Google Scholar
+            </p>
           </div>
         </div>
       </section>
@@ -829,6 +842,69 @@
         document.addEventListener("keydown", function (e) {
           if (e.key === "Escape" && header.classList.contains("nav-open")) setOpen(false);
         });
+      })();
+
+      // ---- Scholar metrics: fetch data/scholar.json and render ------------
+      (function renderScholarMetrics() {
+        var panel = document.querySelector("[data-scholar-panel]");
+        if (!panel) return;
+        var slots = panel.querySelectorAll("[data-scholar]");
+        var updatedEl = panel.querySelector("[data-scholar-updated]");
+
+        function setMetric(key, value) {
+          for (var i = 0; i < slots.length; i++) {
+            if (slots[i].getAttribute("data-scholar") === key) {
+              slots[i].textContent = (value == null || value === 0) ? "0" : String(value);
+            }
+          }
+        }
+
+        function formatUpdated(iso) {
+          if (!iso) return "";
+          // Render as "Aug 8, 2026 · 08:00 (Beijing)" for clarity
+          var d = new Date(iso);
+          if (isNaN(d.getTime())) return iso;
+          var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+          var beijing = new Date(d.getTime() + (d.getTimezoneOffset() + 480) * 60000);
+          var hh = String(beijing.getHours()).padStart(2, "0");
+          var mm = String(beijing.getMinutes()).padStart(2, "0");
+          return months[beijing.getMonth()] + " " + beijing.getDate() + ", " + beijing.getFullYear() +
+                 " \u00B7 " + hh + ":" + mm + " (Beijing)";
+        }
+
+        function render(data) {
+          if (!data) return;
+          setMetric("citations", data.citations);
+          setMetric("h_index", data.h_index);
+          setMetric("i10_index", data.i10_index);
+          // Update aria-label for accessibility
+          panel.setAttribute(
+            "aria-label",
+            "Scholar metrics: " + data.citations + " citations, h-index " +
+              data.h_index + ", i10-index " + data.i10_index
+          );
+          if (updatedEl) {
+            var src = data.source ? " via " + data.source.replace("_", " ") : "";
+            updatedEl.textContent = "Auto-updated daily from Google Scholar" + src +
+              " \u00B7 Last sync: " + formatUpdated(data.last_updated);
+          }
+        }
+
+        // Load inline fallback from <script id="scholar-fallback"> if present,
+        // then try to refresh from data/scholar.json.
+        var fallbackEl = document.getElementById("scholar-fallback");
+        if (fallbackEl) {
+          try {
+            render(JSON.parse(fallbackEl.textContent));
+          } catch (e) { /* ignore */ }
+        }
+
+        fetch("data/scholar.json", { cache: "no-store" })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (data) {
+            if (data && (data.citations || data.h_index)) render(data);
+          })
+          .catch(function () { /* keep fallback */ });
       })();
     </script>
   </body>
