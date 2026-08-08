@@ -1,7 +1,7 @@
 name: Update Scholar Metrics
 
 on:
-  # 00:00 UTC = 08:00 Beijing time (CST, UTC+8)
+  # 00:00 UTC = 08:00 Hong Kong time (HKT, UTC+8)
   schedule:
     - cron: "0 0 * * *"
   # Manual trigger for testing

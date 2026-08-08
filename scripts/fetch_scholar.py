@@ -50,8 +50,8 @@ OPENALEX_AUTHOR_URL = f"https://api.openalex.org/authors/{OPENALEX_AUTHOR_ID}"
 
 OUTPUT_PATH = Path(__file__).resolve().parent.parent / "data" / "scholar.json"
 
-# Beijing time = UTC+8. The workflow runs at 00:00 UTC == 08:00 Beijing.
-BEIJING_TZ = timezone(timedelta(hours=8))
+# Hong Kong time = UTC+8. The workflow runs at 00:00 UTC == 08:00 Hong Kong.
+HONGKONG_TZ = timezone(timedelta(hours=8))
 
 USER_AGENTS = [
     # A small pool of recent, real desktop UAs.
@@ -69,8 +69,8 @@ OPENALEX_CONTACT = "eduliuym@connect.hku.hk"
 
 # ---------- Helpers ----------------------------------------------------------
 
-def beijing_now_iso() -> str:
-    return datetime.now(BEIJING_TZ).strftime("%Y-%m-%dT%H:%M:%S%z")
+def hongkong_now_iso() -> str:
+    return datetime.now(HONGKONG_TZ).strftime("%Y-%m-%dT%H:%M:%S%z")
 
 
 def load_existing() -> dict[str, Any] | None:
@@ -292,7 +292,7 @@ def build_payload(source: str, parsed: dict[str, Any]) -> dict[str, Any]:
         "yearly": parsed.get("yearly", {}),
         "publications": parsed.get("publications", []),
         "profile_url": SCHOLAR_URL,
-        "last_updated": beijing_now_iso(),
+        "last_updated": hongkong_now_iso(),
         "source": source,
         "extra": parsed.get("extra", {}),
     }
@@ -333,7 +333,7 @@ def main() -> int:
     if existing:
         print("[warn] all sources failed; keeping existing scholar.json")
         # Update the last_updated marker so we know the workflow ran
-        existing["last_updated"] = beijing_now_iso()
+        existing["last_updated"] = hongkong_now_iso()
         existing["source"] = existing.get("source", "cache") + "+stale"
         save_json(existing)
         return 0
@@ -348,7 +348,7 @@ def main() -> int:
             "yearly": {},
             "publications": [],
             "profile_url": SCHOLAR_URL,
-            "last_updated": beijing_now_iso(),
+            "last_updated": hongkong_now_iso(),
             "source": "placeholder",
             "extra": {"error": "All sources failed on first run"},
         }

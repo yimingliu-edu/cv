@@ -118,7 +118,7 @@
               </li>
             </ul>
             <p class="hero-metric-footnote" data-scholar-updated>
-              Auto-updated daily from Google Scholar
+              Auto-updated daily at 8:00 AM Hong Kong time from Google Scholar
             </p>
           </div>
         </div>
@@ -861,15 +861,15 @@
 
         function formatUpdated(iso) {
           if (!iso) return "";
-          // Render as "Aug 8, 2026 · 08:00 (Beijing)" for clarity
+          // Render as "Aug 8, 2026 · 08:00 (Hong Kong)"
           var d = new Date(iso);
           if (isNaN(d.getTime())) return iso;
           var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-          var beijing = new Date(d.getTime() + (d.getTimezoneOffset() + 480) * 60000);
-          var hh = String(beijing.getHours()).padStart(2, "0");
-          var mm = String(beijing.getMinutes()).padStart(2, "0");
-          return months[beijing.getMonth()] + " " + beijing.getDate() + ", " + beijing.getFullYear() +
-                 " \u00B7 " + hh + ":" + mm + " (Beijing)";
+          var hk = new Date(d.getTime() + (d.getTimezoneOffset() + 480) * 60000);
+          var hh = String(hk.getHours()).padStart(2, "0");
+          var mm = String(hk.getMinutes()).padStart(2, "0");
+          return months[hk.getMonth()] + " " + hk.getDate() + ", " + hk.getFullYear() +
+                 " \u00B7 " + hh + ":" + mm + " (Hong Kong)";
         }
 
         function render(data) {
@@ -884,8 +884,8 @@
               data.h_index + ", i10-index " + data.i10_index
           );
           if (updatedEl) {
-            var src = data.source ? " via " + data.source.replace("_", " ") : "";
-            updatedEl.textContent = "Auto-updated daily from Google Scholar" + src +
+            updatedEl.textContent =
+              "Auto-updated daily at 8:00 AM Hong Kong time from Google Scholar" +
               " \u00B7 Last sync: " + formatUpdated(data.last_updated);
           }
         }
